@@ -1,17 +1,23 @@
+import { getTopMovies } from "@/utils";
 import Image from "next/image";
+import Link from "next/link";
 
-interface HeroSliderProps {}
 
-export default function HeroSlider({}: HeroSliderProps) {
+export default async function HeroSlider() {
+    const {results:movies} = await getTopMovies();
+    const randomMovieIndex = Math.floor(Math.random() * movies.length);
+    const {title,backdrop_path,overview} = movies[randomMovieIndex]
+
+
   return (
-    <div className=" bg-[url('/assets/poster.png')] bg-cover bg-top">
+    <div className={`bg-cover bg-top`} style={{backgroundImage:`url('https://image.tmdb.org/t/p/original${backdrop_path}')`}}>
       <div className=" container pt-[22px]">
-        <div className="flex items-center justify-between">
-          <div className="flex gap-[24px] items-center">
+        <div className="flex flex-col gap-[12px] items-center justify-between sm:flex-row">
+          <Link href={"/"} className="flex gap-[24px] items-center">
             <Image alt="" src="/assets/tv.png" width={50} height={50} />
             <p className=" text-[24px] font-bold text-white leading-[24px]">MovieBox</p>
-          </div>
-          <form className="w-[50%] flex">
+          </Link>
+          <form className="w-[70%] flex sm:w-[50%]">
             <input
               type="text"
               placeholder="What do you want to watch?"
@@ -24,7 +30,7 @@ export default function HeroSlider({}: HeroSliderProps) {
           </div>
         </div>
         <div className="flex flex-col gap-[16px] text-white max-w-[400px] mt-[100px] pb-[157px]">
-          <p className="text-[48px] leading-[56px] font-bold">John Wick 3 : Parabellum</p>
+          <p className="text-[48px] leading-[56px] font-bold">{title}</p>
           <div className="flex gap-[34px] items-center">
             <div className="flex items-center gap-[10px]">
                 <Image alt="" src="/assets/imdb-logo.png" width={35} height={17}/>
@@ -35,7 +41,7 @@ export default function HeroSlider({}: HeroSliderProps) {
             <span className=" font-normal">97%</span>
             </div>
           </div>
-          <p className=" font-medium text-[14px] leading-[18px]">John Wick is on the run after killing a member of the international assassins&apos; guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.</p>
+          <p className=" font-medium text-[14px] leading-[18px]">{overview}</p>
           <button className="flex items-center px-[16px] py-[6px] gap-[8px] bg-[#BE123C] rounded-[6px] mr-auto">
             <svg
               width="20"

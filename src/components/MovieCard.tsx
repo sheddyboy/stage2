@@ -1,21 +1,17 @@
+"use client"
+import { MovieCardProps } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 
-interface MovieCardProps {
-  liked:boolean;
-  type:string;
-  movieImage:string;
-  countryYear:string;
-  title:string;
-  imdbRating:string;
-  rottenTomatoesRating:string;
-  genre:string;
-}
 
-export default function MovieCard({countryYear,genre,movieImage,imdbRating,liked,rottenTomatoesRating,title,type}: MovieCardProps) {
+
+export default function MovieCard({id,releaseDate,genre,movieImage,imdbRating,liked,rottenTomatoesRating,title,type}: MovieCardProps) {
+  const posterImage = `https://image.tmdb.org/t/p/original/${movieImage}`;
+  console.log("id",id)
   return (
-    <div className=" flex flex-col w-[250px] bg-white" data-testid="movie-card">
+    <Link href={`/movies/${id}`} className=" flex flex-col min-w-[250px] bg-white" data-testid="movie-card">
       <div className=" relative p-[16px] h-[370px] bg-no-repeat bg-cover" >
-        <Image data-testid="movie-poster" alt="" src={movieImage} width={250} height={370} className="absolute left-[0%] top-[0%] bottom-[0%] right-[0%] "/>
+        <Image data-testid="movie-poster" alt="" src={posterImage} fill objectFit="cover" objectPosition="top" className="absolute left-[0%] top-[0%] bottom-[0%] right-[0%] "/>
         <div className="flex justify-between items-center relative">
           <span className="rounded-[12px] px-[8px] py-[3px] text-[#111827] bg-[#F3F4F680]">
             {type}
@@ -39,7 +35,7 @@ export default function MovieCard({countryYear,genre,movieImage,imdbRating,liked
         </div>
       </div>
       <div className="min-h-[120px] pt-[12px] bg-white flex flex-col gap-[12px]">
-        <p className="text-[#9CA3AF] font-bold text-[12px] leading-[15.62px]" data-testid="movie-release-date">{countryYear}</p>
+        <p className="text-[#9CA3AF] font-bold text-[12px] leading-[15.62px]">Release Date: <span data-testid="movie-release-date">{new Date(releaseDate).toDateString()}</span></p>
         <h2 className="text-[#111827] font-bold text-[18px] leading-[23.44px]" data-testid="movie-title">{title}</h2>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[10px]">
@@ -53,6 +49,6 @@ export default function MovieCard({countryYear,genre,movieImage,imdbRating,liked
         </div>
         <p className="text-[#9CA3AF] font-bold text-[12px] leading-[15.62px]">{genre}</p>
       </div>
-    </div>
+    </Link>
   );
 }

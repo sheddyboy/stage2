@@ -1,7 +1,7 @@
 import HeroSlider from "@/components/HeroSlider";
-import MovieCard from "@/components/MovieCard";
+import TopMovies from "@/components/TopMovies";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <HeroSlider />
@@ -9,21 +9,7 @@ export default function Home() {
         <h2 className="text-black text-[36px] font-bold leading-[46.87px] ">
           Featured Movie
         </h2>
-        <div className="grid grid-cols-4 gap-x-[80px] gap-y-[126px]">
-          {new Array(12).fill(0).map((item, index) => (
-            <MovieCard
-              key={index}
-              countryYear="USA, 2016 - Current"
-              genre="Action, Adventure, Horror"
-              imdbRating="86.0 / 100"
-              liked={false}
-              movieImage="/assets/poster-strange.png"
-              rottenTomatoesRating="97%"
-              title="Stranger Things"
-              type="TV SERIES"
-            />
-          ))}
-        </div>
+        <TopMovies/>
       </div>
       <div className="flex flex-col gap-[36px] items-center justify-center mb-[74px]">
         <div className="flex gap-[48px]">
@@ -90,12 +76,12 @@ export default function Home() {
             />
           </svg>
         </div>
-        <div className="flex gap-[48px]">
+        <div className="flex flex-col items-center sm:flex-row gap-[48px]">
           <span className="text-[#111827] text-[18px] font-bold leading-[23.44px]">Conditions of Use</span>
           <span className="text-[#111827] text-[18px] font-bold leading-[23.44px]">Privacy & Policy</span>
           <span className="text-[#111827] text-[18px] font-bold leading-[23.44px]">Press Room</span>
         </div>
-        <p className="text-[#6B7280] text-[18px] font-bold leading-[23.44px]">© 2021 MovieBox by Adriana Eka Prayudha</p>
+        <p className="text-[#6B7280] text-center px-[20px] text-[18px] font-bold leading-[23.44px]">© 2021 MovieBox by Adriana Eka Prayudha</p>
       </div>
     </>
   );
