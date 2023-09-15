@@ -149,7 +149,7 @@ export default async function MoviePage({
                   Top rated movie #65
                 </button>
                 <p className="text-[20px] leading-[30px] font-medium text-[#333]">
-                  Awards 9 nominations
+                  Awards 10 nominations
                 </p>
               </div>
             </div>
