@@ -66,7 +66,7 @@ export default async function MoviePage({
           </p>
         </div>
       </div>
-      <div className="flex flex-col gap-[30px] justify-between px-[50px] pt-[38px] pb-[20px] flex-grow">
+      <div className="flex flex-col gap-[30px] justify-between px-[20px] sm:px-[50px] pt-[38px] pb-[20px] flex-grow">
         <div className="relative min-h-[450px] flex items-center justify-center flex-grow rounded-[20px] overflow-hidden">
           <Image
             alt=""
@@ -155,7 +155,7 @@ export default async function MoviePage({
             </div>
             <div className="flex flex-col gap-[33px]">
               <div className="flex flex-col items-center gap-[12px]">
-                <button className="py-[12px] w-[360px] flex justify-center gap-[12px] items-center text-white text-[20px] font-medium leading-[30px] bg-[#BE123C] rounded-[10px]">
+                <button className="py-[12px] w-[250px] sm:w-[360px] flex justify-center gap-[12px] items-center text-white text-[20px] font-medium leading-[30px] bg-[#BE123C] rounded-[10px]">
                   <Image
                     alt=""
                     src="/assets/Two Tickets.png"
@@ -164,7 +164,7 @@ export default async function MoviePage({
                   />
                   See Showtimes
                 </button>
-                <button className="py-[12px] w-[360px] flex justify-center gap-[12px] items-center text-[#333] text-[20px] font-medium leading-[30px] bg-[#BE123C1A] rounded-[10px]">
+                <button className="py-[12px] w-[250px] sm:w-[360px] flex justify-center gap-[12px] items-center text-[#333] text-[20px] font-medium leading-[30px] bg-[#BE123C1A] rounded-[10px]">
                   <Image alt="" src="/assets/List.png" width={25} height={25} />
                   More watch options
                 </button>
